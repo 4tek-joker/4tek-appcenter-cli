@@ -279,6 +279,7 @@ export async function getReactNativeProjectAppVersion(
 }
 
 export function runReactNativeBundleCommand(
+  bundle: string,
   bundleName: string,
   development: boolean,
   entryFile: string,
