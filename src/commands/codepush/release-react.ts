@@ -179,10 +179,6 @@ export default class CodePushReleaseReactCommand extends CodePushReleaseCommandB
       this.bundleName = this.os === "ios" ? "main.jsbundle" : `index.${this.os}.bundle`;
     }
 
-    if (!this.bundle) {
-      this.bundle = "bundle";
-    }
-
     if (!this.entryFile) {
       this.entryFile = `index.${this.os}.js`;
       if (fileDoesNotExistOrIsDirectory(this.entryFile)) {
