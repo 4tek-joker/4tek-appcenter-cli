@@ -33,9 +33,7 @@ export default class CodePushReleaseReactCommand extends CodePushReleaseCommandB
   @hasArg
   public bundleName: string;
 
-  @help(
-    'name of bundle build. "bundle" is build metro. "webpack-bundle" is build super app. default "webpack-bundle"'
-  )
+  @help('name of bundle build. "bundle" is build metro. "webpack-bundle" is build super app. default "webpack-bundle"')
   @shortName("b")
   @longName("bundle")
   @hasArg

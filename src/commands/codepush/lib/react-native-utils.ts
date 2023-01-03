@@ -297,7 +297,7 @@ export function runReactNativeBundleCommand(
 
   Array.prototype.push.apply(reactNativeBundleArgs, [
     getCliPath(),
-    "bundle",
+    bundle,
     "--assets-dest",
     outputFolder,
     "--bundle-output",

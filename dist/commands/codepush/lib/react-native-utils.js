@@ -237,7 +237,7 @@ function runReactNativeBundleCommand(bundle, bundleName, development, entryFile,
     }
     Array.prototype.push.apply(reactNativeBundleArgs, [
         getCliPath(),
-        "bundle",
+        bundle,
         "--assets-dest",
         outputFolder,
         "--bundle-output",
