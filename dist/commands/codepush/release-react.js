@@ -102,7 +102,7 @@ let CodePushReleaseReactCommand = class CodePushReleaseReactCommand extends code
             try {
                 file_utils_1.createEmptyTmpReleaseFolder(this.updateContentsPath);
                 file_utils_1.removeReactTmpDir();
-                yield react_native_utils_1.runReactNativeBundleCommand(this.bundle, this.bundleName, this.development, this.entryFile, this.updateContentsPath, this.os, this.sourcemapOutput, this.extraBundlerOptions);
+                yield react_native_utils_1.runReactNativeBundleCommand(!!this.repack ? "webpack-bundle" : "bundle", this.bundleName, this.development, this.entryFile, this.updateContentsPath, this.os, this.sourcemapOutput, this.extraBundlerOptions);
                 const isHermesEnabled = this.useHermes ||
                     (this.os === "android" && (yield react_native_utils_1.getAndroidHermesEnabled(this.gradleFile))) || // Check if we have to run hermes to compile JS to Byte Code if Hermes is enabled in build.gradle and we're releasing an Android build
                     (this.os === "ios" && (yield react_native_utils_1.getiOSHermesEnabled(this.podFile))); // Check if we have to run hermes to compile JS to Byte Code if Hermes is enabled in Podfile and we're releasing an iOS build
@@ -126,17 +126,14 @@ let CodePushReleaseReactCommand = class CodePushReleaseReactCommand extends code
 };
 __decorate([
     commandline_1.help('Name of the generated JS bundle file. If unspecified, the standard bundle name will be used, depending on the specified platform: "main.jsbundle" (iOS), "index.android.bundle" (Android) or "index.windows.bundle" (Windows)'),
-    commandline_1.shortName("bn"),
+    commandline_1.shortName("b"),
     commandline_1.longName("bundle-name"),
     commandline_1.hasArg
 ], CodePushReleaseReactCommand.prototype, "bundleName", void 0);
 __decorate([
-    commandline_1.help('name of bundle build. "bundle" is build metro. "webpack-bundle" is build super app. default "webpack-bundle"'),
-    commandline_1.shortName("b"),
-    commandline_1.longName("bundle"),
-    commandline_1.hasArg,
-    commandline_1.defaultValue("webpack-bundle")
-], CodePushReleaseReactCommand.prototype, "bundle", void 0);
+    commandline_1.help("Specifies whether to build with a repack or nomal"),
+    commandline_1.longName("repack")
+], CodePushReleaseReactCommand.prototype, "repack", void 0);
 __decorate([
     commandline_1.help("Specifies whether to generate a dev or release build"),
     commandline_1.longName("development")

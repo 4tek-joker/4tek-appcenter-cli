@@ -28,17 +28,14 @@ export default class CodePushReleaseReactCommand extends CodePushReleaseCommandB
   @help(
     'Name of the generated JS bundle file. If unspecified, the standard bundle name will be used, depending on the specified platform: "main.jsbundle" (iOS), "index.android.bundle" (Android) or "index.windows.bundle" (Windows)'
   )
-  @shortName("bn")
+  @shortName("b")
   @longName("bundle-name")
   @hasArg
   public bundleName: string;
 
-  @help('name of bundle build. "bundle" is build metro. "webpack-bundle" is build super app. default "webpack-bundle"')
-  @shortName("b")
-  @longName("bundle")
-  @hasArg
-  @defaultValue("webpack-bundle")
-  public bundle: string;
+  @help("Specifies whether to build with a repack or nomal")
+  @longName("repack")
+  public repack: boolean;
 
   @help("Specifies whether to generate a dev or release build")
   @longName("development")
@@ -229,7 +226,7 @@ export default class CodePushReleaseReactCommand extends CodePushReleaseCommandB
       createEmptyTmpReleaseFolder(this.updateContentsPath);
       removeReactTmpDir();
       await runReactNativeBundleCommand(
-        this.bundle,
+        !!this.repack ? "webpack-bundle" : "bundle",
         this.bundleName,
         this.development,
         this.entryFile,
