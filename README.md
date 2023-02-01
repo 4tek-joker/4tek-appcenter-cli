@@ -17,6 +17,11 @@ yarn global add git+https://github.com/4tek-joker/4tek-appcenter-cli.git
 
 or
 
+Nếu lỗi permission ko cài được lib vào /usr/local/lib/node_modules thử các cách sau:
+- Chạy lệnh sudo npm install --location=global git+https://github.com/4tek-joker/4tek-appcenter-cli.git
+- sudo chown -R $USER /usr/local/lib/node_modules 
+- install lại npm dang root: sudo npm install -g npm -> npm fund -> sudo npm install --location=global git+https://github.com/4tek-joker/4tek-appcenter-cli.git
+
 ```
 npm install --location=global git+https://github.com/4tek-joker/4tek-appcenter-cli.git
 ```
